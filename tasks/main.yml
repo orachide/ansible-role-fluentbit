@@ -1,0 +1,17 @@
+---
+# tasks file for ansible-role-fluentbit
+
+- name: Install Fluentbit
+  include_tasks: 'install-{{ ansible_os_family }}.yml'
+  tags: ['install']
+
+- name: Install fluentbit package
+  package:
+    name: td-agent-bit
+    state: present
+    update_cache: true
+  notify: Restart Fluentbit service
+  tags: ['install']
+
+- import_tasks: configure.yml
+  tags: ['configure']

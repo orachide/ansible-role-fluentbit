@@ -1,0 +1,17 @@
+---
+- name: Converge
+  hosts: all
+  roles:
+    - role: ansible-role-fluentbit
+      fluentbit_service_enable_metrics: true
+      # Default inputs
+      fluentbit_inputs:
+        - {"Name": "dummy", "Tag": "dummy.log"}
+
+      # Default outputs
+      fluentbit_outputs:
+        - {"Name": "stdout", "Match": "*"}
+
+      fluentbit_additional_conf_files:
+        - name: cpu.conf
+          template: '{{ playbook_dir }}/templates/cpu.conf.j2'

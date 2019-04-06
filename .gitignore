@@ -1,0 +1,12 @@
+
+# molecule
+.molecule/
+
+.cache/
+
+# Python
+*.pyc
+
+*.log
+
+*.pytest_cache/

@@ -1,0 +1,18 @@
+---
+# defaults file for ansible-role-fluentbit
+
+fluentbit_service_flush_seconds: 5
+fluentbit_service_daemon: false
+fluentbit_service_custom_parsers_file: []
+fluentbit_service_log_level: info
+fluentbit_service_enable_metrics: false
+fluentbit_service_metrics_listen_ip: 0.0.0.0
+fluentbit_service_metrics_listen_port: 2020
+
+# Default inputs
+fluentbit_inputs: []
+
+# Default outputs
+fluentbit_outputs: []
+
+fluentbit_additional_conf_files: []

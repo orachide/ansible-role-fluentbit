@@ -1,0 +1,30 @@
+---
+dependency:
+  name: galaxy
+driver:
+  name: docker
+lint:
+  name: yamllint
+platforms:
+  - name: fluentbit_centos7_instance
+    image: centos:7
+    privileged: true
+    command: '/sbin/init'
+    cap_add: ['SYS_ADMIN', 'SETPCAP']
+  - name: fluentbit_ubuntu_instance
+    image: geerlingguy/docker-ubuntu1804-ansible
+    privileged: true
+    command: '/sbin/init'
+    cap_add: ['SYS_ADMIN', 'SETPCAP']
+    volumes:
+      - /sys/fs/cgroup:/sys/fs/cgroup:ro
+provisioner:
+  name: ansible
+  lint:
+    name: ansible-lint
+scenario:
+  name: default
+verifier:
+  name: testinfra
+  lint:
+    name: flake8

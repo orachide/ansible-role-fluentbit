@@ -1,0 +1,60 @@
+# {{ansible_managed}}
+
+[SERVICE]
+    # Flush
+    # =====
+    # Set an interval of seconds before to flush records to a destination
+    Flush        {{ fluentbit_service_flush_seconds }}
+
+    # Daemon
+    # ======
+    # Instruct Fluent Bit to run in foreground or background mode.
+    Daemon       {{ (fluentbit_service_daemon | bool) | ternary('On', 'Off' ) }}
+
+    # Log_Level
+    # =========
+    # Set the verbosity level of the service, values can be:
+    #
+    # - error
+    # - warning
+    # - info
+    # - debug
+    # - trace
+    #
+    # By default 'info' is set, that means it includes 'error' and 'warning'.
+    Log_Level    {{ fluentbit_service_log_level }}
+
+    # Parsers_File
+    # ============
+    # Specify an optional 'Parsers' configuration file
+    Parsers_File parsers.conf
+    {% for parsers_file in fluentbit_service_custom_parsers_file %}
+    Parsers_File {{ parsers_file }}
+    {% endfor %}
+
+    Plugins_File plugins.conf
+
+    # HTTP Server
+    # ===========
+    # Enable/Disable the built-in HTTP Server for metrics
+    HTTP_Server  {{ (fluentbit_service_enable_metrics | bool) | ternary('On', 'Off' ) }}
+    HTTP_Listen  {{ fluentbit_service_metrics_listen_ip }}
+    HTTP_Port    {{ fluentbit_service_metrics_listen_port }}
+
+{% for input in fluentbit_inputs %}
+[INPUT]
+{% for key in input %}
+    {{ key }} {{ input[key] }}
+{% endfor %}
+{% endfor %}
+
+{% for input in fluentbit_outputs %}
+[OUTPUT]
+{% for key in input %}
+    {{ key }} {{ input[key] }}
+{% endfor %}
+{% endfor %}
+
+{% for additional_conf_file in fluentbit_additional_conf_files %}
+@INCLUDE {{ additional_conf_file.name }}
+{% endfor %}

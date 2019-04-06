@@ -1,0 +1,10 @@
+---
+
+- name: Install Redhat | Add yum repository
+  yum_repository:
+    name: TD_Agent_Bit
+    baseurl: http://packages.fluentbit.io/centos/7
+    gpgcheck: true
+    gpgkey: http://packages.fluentbit.io/fluentbit.key
+    description: Fluent bit repo
+    enabled: true
