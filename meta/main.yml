@@ -4,7 +4,7 @@ galaxy_info:
   description: Install Fluentbit as a service
   company: chidix.fr
 
-  license: license (GPLv2, CC-BY, etc)
+  license: license BSD
 
   min_ansible_version: 2.4
 
@@ -19,6 +19,7 @@ galaxy_info:
   galaxy_tags:
     - fluentbit
     - fluentd
-    - logs-collector
+    - logcollectors
+    - logshipper
 
 dependencies: []
