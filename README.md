@@ -6,6 +6,11 @@ Ansible Role Fluentbit
 
 This role install [Fluentbit](https://fluentbit.io/) as a service on given hosts
 
+Installation
+------------
+
+    ansible-galaxy install orachide.fluentbit
+
 Requirements
 ------------
 
