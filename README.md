@@ -26,6 +26,7 @@ Role Variables
 | fluentbit_inputs  | false     | *[]*          | Array of inputs (in JSON format) to add in default conf file |
 | fluentbit_outputs  | false     | *[]*          | Array of ouputs (in JSON format) to add in default conf file |
 | fluentbit_additional_conf_files  | false     | *[]*          | Additional conf files to be installed, could be *Jinja* template |
+| fluentbit_service_custom_parsers_files  | false     | *[]*          | Additional conf files to be included as parses, could be *Jinja* template |
 
 Dependencies
 ------------
@@ -53,6 +54,9 @@ passed in as parameters) is always nice for users too:
           fluentbit_additional_conf_files:
             - name: cpu.conf
               template: '{{ playbook_dir }}/templates/cpu.conf.j2'
+          fluentbit_service_custom_parsers_files:
+            - name: custom_parser.conf
+              template: '{{ playbook_dir }}/templates/custom_parser.conf.j2'
 
 License
 -------

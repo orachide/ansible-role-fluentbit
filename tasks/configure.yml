@@ -15,3 +15,12 @@
   with_items: '{{ fluentbit_additional_conf_files }}'
   when: fluentbit_additional_conf_files | length >0
   notify: Restart Fluentbit service
+
+- name: Configure | Source additional td-agent-bit parsers conf
+  template:
+    src: '{{ item.template }}'
+    dest: '/etc/td-agent-bit/{{ item.name }}'
+    mode: 0644
+  with_items: '{{ fluentbit_service_custom_parsers_files }}'
+  when: fluentbit_service_custom_parsers_files | length >0
+  notify: Restart Fluentbit service
