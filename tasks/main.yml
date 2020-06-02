@@ -1,7 +1,7 @@
 ---
 
 - name: "fluentbit | install fluentbit requirements"
-  import_tasks: "repo-{{ ansible_os_family | lower() }}.yml"
+  include_tasks: "repo-{{ ansible_os_family | lower() }}.yml"
   tags:
     - "fluentbit::repository"
     - "fluentbit::install"
@@ -15,7 +15,8 @@
     - "fluentbit::package"
     - "fluentbit::install"
 
-- include_tasks: "configure.yml"
+- name: "fluentbit | configure fluentbit"
+  include_tasks: "configure.yml"
   tags:
     - "fluentbit::configure"
     - "fluentbit::install"

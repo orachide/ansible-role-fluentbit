@@ -13,12 +13,11 @@
 
 - name: "fluentbit | add and enable fluentbit repository"
   apt_repository:
-    repo: >
-      "deb
-      {{ fluentbit_repository.baseurl }}/
-      {{ ansible_distribution | lower() }}/{{ ansible_distribution_release }}
+    repo: >-
+      deb
+      {{ fluentbit_repository.baseurl }}/{{ ansible_distribution | lower() }}/{{ ansible_distribution_release }}
       {{ ansible_distribution_release }}
-      main"
+      main
     state: present
     filename: td-agent-bit
     update_cache: true
