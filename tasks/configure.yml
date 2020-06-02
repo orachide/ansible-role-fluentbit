@@ -5,7 +5,7 @@
     src: "etc/td-agent-bit.conf.j2"
     dest: "/etc/td-agent-bit/td-agent-bit.conf"
     mode: 0644
-  notify: "restart fluentbit service"
+  notify: "enable and start fluentbit service"
 
 - name: "fluentbit | templatize additional configuration"
   template:

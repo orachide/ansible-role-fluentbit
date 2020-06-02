@@ -1,4 +1,10 @@
 ---
+- name: "start fluentbit service"
+  service:
+    name: "td-agent-bit"
+    state: started
+  listen: "enable and start fluentbit service"
+
 - name: "restart fluentbit service"
   service:
     name: "td-agent-bit"
@@ -8,3 +14,4 @@
   service:
     name: "td-agent-bit"
     enabled: true
+  listen: "enable and start fluentbit service"
