@@ -1,17 +1,19 @@
 ---
 
-- name: Configure | Source td-agent-bit main conf
+- name: "fluentbit | templatize main configuration"
   template:
-    src: td-agent-bit.conf.j2
-    dest: /etc/td-agent-bit/td-agent-bit.conf
+    src: "etc/td-agent-bit.conf.j2"
+    dest: "/etc/td-agent-bit/td-agent-bit.conf"
     mode: 0644
-  notify: Restart Fluentbit service
+  notify: "restart fluentbit service"
 
-- name: Configure | Source additional td-agent-bit conf
+- name: "fluentbit | templatize additional configuration"
   template:
-    src: '{{ item.template }}'
-    dest: '/etc/td-agent-bit/{{ item.name }}'
+    src: "{{ extra_config.template }}"
+    dest: "/etc/td-agent-bit/{{ extra_config.name }}"
     mode: 0644
-  with_items: '{{ fluentbit_additional_conf_files }}'
-  when: fluentbit_additional_conf_files | length >0
-  notify: Restart Fluentbit service
+  loop: "{{ fluentbit_additional_conf_files }}"
+  loop_control:
+    loop_var: extra_config
+  when: fluentbit_additional_conf_files | length() > 0
+  notify: "restart fluentbit service"

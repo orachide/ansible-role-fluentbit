@@ -1,0 +1,24 @@
+---
+- name: "fluentbit | add fluentbit requirements"
+  package:
+    name: "apt-transport-https"
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: "fluentbit | add fluentbit repository gpg key"
+  apt_key:
+    url: "{{ fluentbit_repository.gpg }}"
+    state: present
+
+- name: "fluentbit | add and enable fluentbit repository"
+  apt_repository:
+    repo: >
+      "deb
+      {{ fluentbit_repository.baseurl }}/
+      {{ ansible_distribution | lower() }}/{{ ansible_distribution_release }}
+      {{ ansible_distribution_release }}
+      main"
+    state: present
+    filename: td-agent-bit
+    update_cache: true

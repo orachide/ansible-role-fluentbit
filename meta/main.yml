@@ -4,11 +4,8 @@ galaxy_info:
   author: orachide
   description: Install Fluentbit as a service
   company: chidix.fr
-
   license: license BSD
-
-  min_ansible_version: 2.4
-
+  min_ansible_version: 2.7
   platforms:
     - name: EL
       versions:
@@ -16,11 +13,9 @@ galaxy_info:
     - name: Ubuntu
       versions:
         - all
-
   galaxy_tags:
     - fluentbit
     - fluentd
     - logcollectors
     - logshipper
-
 dependencies: []

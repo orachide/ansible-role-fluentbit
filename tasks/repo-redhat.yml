@@ -1,0 +1,10 @@
+---
+
+- name: "fluentbit | add and enable fluentbit repository"
+  yum_repository:
+    name: "td-agent-bit"
+    description: "fluentbit repository"
+    baseurl: "{{ fluentbit_repository.baseurl }}/centos/7"
+    gpgkey: "{{ fluentbit_repository.gpg }}"
+    gpgcheck: true
+    enabled: true

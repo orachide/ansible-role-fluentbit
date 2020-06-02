@@ -1,6 +1,13 @@
 ---
-# defaults file for ansible-role-fluentbit
+# type: dict
+# descr: package repository details
+fluentbit_repository:
+  gpg: "https://packages.fluentbit.io/fluentbit.key"
+  baseurl: "https://packages.fluentbit.io"
+  package: "td-agent-bit"
 
+# type:
+# descr:
 fluentbit_service_flush_seconds: 5
 fluentbit_service_daemon: false
 fluentbit_service_custom_parsers_file: []
@@ -9,10 +16,14 @@ fluentbit_service_enable_metrics: false
 fluentbit_service_metrics_listen_ip: 0.0.0.0
 fluentbit_service_metrics_listen_port: 2020
 
-# Default inputs
+# type:
+# descr:
 fluentbit_inputs: []
 
-# Default outputs
+# type:
+# descr:
 fluentbit_outputs: []
 
+# type:
+# descr:
 fluentbit_additional_conf_files: []
