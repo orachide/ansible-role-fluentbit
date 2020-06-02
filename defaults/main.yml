@@ -6,8 +6,8 @@ fluentbit_repository:
   baseurl: "https://packages.fluentbit.io"
   package: "td-agent-bit"
 
-# type:
-# descr:
+# type: string
+# descr: common td-agent daemon parameters
 fluentbit_service_flush_seconds: 5
 fluentbit_service_daemon: false
 fluentbit_service_custom_parsers_file: []
@@ -16,14 +16,14 @@ fluentbit_service_enable_metrics: false
 fluentbit_service_metrics_listen_ip: 0.0.0.0
 fluentbit_service_metrics_listen_port: 2020
 
-# type:
-# descr:
+# type: list
+# descr: list of dict, td-agent input section
 fluentbit_inputs: []
 
-# type:
-# descr:
+# type: list
+# descr: list of dictm td-agent output section
 fluentbit_outputs: []
 
-# type:
-# descr:
+# type: list
+# descr: list of extra td-agent configuration templates
 fluentbit_additional_conf_files: []
