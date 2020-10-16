@@ -7,7 +7,7 @@
 
 - name: Install Debian | Add td-agent-bit repository
   apt_repository:
-    repo: 'deb https://packages.fluentbit.io/ubuntu/bionic bionic main'
+    repo: '{{ fluentbit_apt_repo }}'
     state: present
     filename: td-agent-bit
     update_cache: true

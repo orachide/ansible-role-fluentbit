@@ -16,3 +16,5 @@ fluentbit_inputs: []
 fluentbit_outputs: []
 
 fluentbit_additional_conf_files: []
+
+fluentbit_apt_repo: 'deb https://packages.fluentbit.io/ubuntu/bionic bionic main'
