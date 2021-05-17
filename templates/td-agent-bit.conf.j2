@@ -24,6 +24,11 @@
     # By default 'info' is set, that means it includes 'error' and 'warning'.
     Log_Level    {{ fluentbit_service_log_level }}
 
+{% if fluentbit_service_storage_path is defined %}
+    # enable filesystem buffering
+    storage.path {{ fluentbit_service_storage_path }}
+
+{% endif %}
     # Parsers_File
     # ============
     # Specify an optional 'Parsers' configuration file
