@@ -49,14 +49,14 @@
 {% for input in fluentbit_inputs %}
 [INPUT]
 {% for key in input %}
-    {{ key }} {{ input[key] }}
+    {{ key | split(':') | first }} {{ input[key] }}
 {% endfor %}
 {% endfor %}
 
 {% for input in fluentbit_outputs %}
 [OUTPUT]
 {% for key in input %}
-    {{ key }} {{ input[key] }}
+    {{ key | split(':') | first }} {{ input[key] }}
 {% endfor %}
 {% endfor %}
 

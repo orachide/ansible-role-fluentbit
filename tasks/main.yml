@@ -1,6 +1,8 @@
 ---
 # tasks file for ansible-role-fluentbit
 
+# - debug: msg="{{ 'Systemd_Filter:0' | split(':') | first }}"
+
 - name: Install Fluentbit
   include_tasks: 'install-{{ ansible_os_family }}.yml'
   tags: ['install']
