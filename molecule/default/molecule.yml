@@ -3,7 +3,7 @@ dependency:
   name: galaxy
 driver:
   name: docker
-lint:
+lint: 
   name: yamllint
 platforms:
   - name: fluentbit_centos7_instance

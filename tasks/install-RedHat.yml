@@ -1,9 +1,12 @@
 ---
 
-- name: Install Redhat | Add yum repository
+- name: Install Redhat | Detect Centos/Rocky linux version
+  set_fact: distro_version="{{ ansible_distribution_version|int }}"
+
+- name: Install Redhat | "Add yum repository for {{ ansible_distribution }}-{{ distro_version }}"
   yum_repository:
     name: TD_Agent_Bit
-    baseurl: http://packages.fluentbit.io/centos/7/$basearch/
+    baseurl: "http://packages.fluentbit.io/centos/{{ distro_version }}/$basearch/"
     gpgcheck: true
     gpgkey: http://packages.fluentbit.io/fluentbit.key
     description: Fluent bit repo
