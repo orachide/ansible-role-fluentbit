@@ -8,3 +8,4 @@
     gpgkey: http://packages.fluentbit.io/fluentbit.key
     description: Fluent bit repo
     enabled: true
+    proxy: '{{ fluentbit_yum_proxy }}'

@@ -18,3 +18,4 @@ fluentbit_outputs: []
 fluentbit_additional_conf_files: []
 
 fluentbit_apt_repo: 'deb https://packages.fluentbit.io/ubuntu/bionic bionic main'
+fluentbit_yum_proxy: '_none_'

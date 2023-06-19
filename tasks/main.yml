@@ -11,6 +11,7 @@
     state: present
     update_cache: true
   notify: Restart Fluentbit service
+  when: not ansible_check_mode
   tags: ['install']
 
 - import_tasks: configure.yml

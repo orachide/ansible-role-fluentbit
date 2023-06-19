@@ -27,6 +27,7 @@ Role Variables
 | fluentbit_outputs  | false     | *[]*          | Array of ouputs (in JSON format) to add in default conf file |
 | fluentbit_additional_conf_files  | false     | *[]*          | Additional conf files to be installed, could be *Jinja* template |
 | fluentbit_apt_repo | false | *deb https://packages.fluentbit.io/ubuntu/bionic bionic main* | An apt source url to use |
+| fluentbit_yum_proxy | false | \_none\_ | URL to the proxy server that yum should use. |
 
 Dependencies
 ------------
@@ -55,6 +56,7 @@ passed in as parameters) is always nice for users too:
           fluentbit_additional_conf_files:
             - name: cpu.conf
               template: '{{ playbook_dir }}/templates/cpu.conf.j2'
+          fluentbit_yum_proxy: 'http://proxy:port'
 
 License
 -------
